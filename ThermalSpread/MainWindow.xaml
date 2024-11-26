@@ -1,0 +1,52 @@
+﻿<Window x:Class="ThermalSpread.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ThermalSpread"
+        xmlns:components="clr-namespace:ThermalSpread.components"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="900">
+    <Grid Background="#e1e3f3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.RowSpan="2"/>
+            <components:TemperaturesCanvas
+                x:Name="temperaturesCanvas"
+                Gradient="{Binding Path=Gradient}"/>
+        </Grid>
+        <TabControl Background="#e1e3f3" Grid.Column="1">
+            
+            <TabItem Header="Simulation">
+                <components:SimulationPanel
+                    UpdateUI="{Binding Path=UpdateUI, Mode=TwoWay}"
+                    MinStepMs="{Binding Path=MinStepMs, Mode=TwoWay}"
+                    NrOfThreads="{Binding Path=NrOfThreads, Mode=TwoWay}"
+                    SimulationTarget="{Binding Path=SimulationTarget, Mode=TwoWay}"
+                    OnStart="SimulationPanel_OnStart" 
+                    OnStop="SimulationPanel_OnStop" 
+                    OnStartBenchmark="SimulationPanel_OnStartBenchmark"
+                    OnReset="SimulationPanel_OnReset"
+                    IsSimulationRunning="{Binding Path=IsAnySimulationRunning, Mode=OneWay}"/>
+            
+            </TabItem>
+
+            <TabItem Header="Configuration">
+
+            </TabItem>
+
+            <TabItem Header="Interactivity">
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

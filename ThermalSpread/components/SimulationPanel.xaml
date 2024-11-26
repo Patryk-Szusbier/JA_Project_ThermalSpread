@@ -1,0 +1,97 @@
+﻿<UserControl x:Class="ThermalSpread.components.SimulationPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             x:Name="uc" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock TextWrapping="Wrap" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Min step ms. = {0:N0}">
+                    <Binding Path="MinStepMs" ElementName="uc"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <Slider Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Minimum="0" Maximum="1000" Value="{Binding Path=MinStepMs, Mode=TwoWay, ElementName=uc}" TickFrequency="1"/>
+
+        <TextBlock TextWrapping="Wrap" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Nr of threads = {0:N0}">
+                    <Binding Path="NrOfThreads" ElementName="uc"/>
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <Slider Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Minimum="1" Maximum="20" Value="{Binding Path=NrOfThreads, Mode=TwoWay, ElementName=uc}" TickFrequency="1"/>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" IsEnabled="{Binding Path=IsSimulationRunning, Mode=OneWay, ElementName=uc}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label>DLL:</Label>
+            <CheckBox Margin="5, 0, 0, 0" IsChecked="{Binding Path=SimulationTarget, Mode=TwoWay, ElementName=uc}"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">C#</CheckBox>
+            <CheckBox Margin="5, 0, 0, 0" IsChecked="{Binding Path=SimulationTarget, Mode=TwoWay, ElementName=uc}"  Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">ASM - vector</CheckBox>
+        </Grid>
+        <Button Width="100"  Grid.Row="3" Grid.Column="0" Margin="0, 0, 5, 0" VerticalAlignment="Center" Click="StartSimulation_Click" Background="#84c282" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="15"/>
+                </Style>
+            </Button.Resources>
+
+            START
+        </Button>
+
+        <Button Width="100" Grid.Row="3" Grid.Column="0" Margin="0, 0, 5, 0" VerticalAlignment="Center" Click="EndSimulation_Click" Background="#cc0000" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+
+            STOP
+        </Button>
+
+        <CheckBox IsEnabled="{Binding Path=IsSimulationRunning, Mode=OneWay, ElementName=uc}" Grid.Row="3" Grid.Column="2" IsChecked="{Binding Path=UpdateUI, Mode=TwoWay, ElementName=uc}" VerticalAlignment="Center">Update UI</CheckBox>
+
+        <Button Grid.Row="4" Grid.ColumnSpan="3" Margin="0, 5, 0, 0" VerticalAlignment="Center" Click="StartBenchmark_Click" Background="#74cb83">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+
+            START BENCHMARK
+        </Button>
+
+        <Button Grid.Row="5" Grid.ColumnSpan="3" Margin="0, 5, 0, 0" VerticalAlignment="Center" Click="Reset_Click" Background="Black" Foreground="White">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+
+            RESTART
+        </Button>
+    </Grid>
+</UserControl>

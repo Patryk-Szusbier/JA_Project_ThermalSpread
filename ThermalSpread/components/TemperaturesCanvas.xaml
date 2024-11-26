@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="ThermalSpread.components.TemperaturesCanvas"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ThermalSpread"
+             mc:Ignorable="d" 
+             x:Name="uc"
+             d:DesignHeight="600" d:DesignWidth="900">
+    <Border CornerRadius="10">
+        <Canvas SizeChanged="Canvas_SizeChanged">
+            <Image 
+                Margin="0"
+                x:Name="matrixImage"
+                Stretch="Fill"
+                Loaded="matrixImage_Loaded"
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}},Path=ActualWidth, Mode=OneWay}"
+                Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}},Path=ActualHeight, Mode=OneWay}"/>
+
+            <Image 
+                Margin="0"
+                x:Name="drawingImage"
+                Stretch="Fill"
+                Loaded="matrixImage_Loaded"
+                RenderOptions.BitmapScalingMode="NearestNeighbor"
+                Width="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}},Path=ActualWidth, Mode=OneWay}"
+                Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Border}},Path=ActualHeight, Mode=OneWay}"/>
+
+            <Border Background="White" CornerRadius="10" Canvas.Left="10" Canvas.Top="10" Padding="5" IsEnabled="{Binding Path=IsInteractivityEnabled, ElementName=uc, Mode=OneWay}">
+                <DockPanel>
+                    <Image Source="/images/resize-icon.png" Width="20" Height="20" Margin="0, 0, 5, 0" />
+                    <TextBox x:Name="widthTxtBox" TextChanged="TextBox_TextChanged" FontSize="8" VerticalAlignment="Center" FontWeight="Bold" PreviewTextInput="TextBox_PreviewTextInput" BorderThickness="0" MinWidth="20" Background="#E5E5E5"/>
+                    <Label FontSize="8" VerticalAlignment="Center" FontWeight="Bold">x</Label>
+                    <TextBox x:Name="heightTxtBox" TextChanged="TextBox_TextChanged" FontSize="8" VerticalAlignment="Center" FontWeight="Bold" PreviewTextInput="TextBox_PreviewTextInput" BorderThickness="0" MinWidth="20" Background="#E5E5E5"/>
+
+                    <Button Visibility="Collapsed" x:Name="saveButton" Margin="10, 0, 0, 0" Click="SaveButton_Click">
+                        <Image Width="20" Source="/images/save-icon.png"/>
+                    </Button>
+                </DockPanel>
+            </Border>
+        </Canvas>
+    </Border>
+</UserControl>
