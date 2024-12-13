@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\App.xaml
-3-2146732273
+7-241597665
 
-161322800998
+241171174105
 1981124507420
-components\SimulationPanel.xaml;components\TemperaturesCanvas.xaml;MainWindow.xaml;
+components\ConfigurationPanel.xaml;components\ConsoleOutput.xaml;components\FileInput.xaml;components\InteractivityPanel.xaml;components\SimulationPanel.xaml;components\TemperaturesCanvas.xaml;MainWindow.xaml;
 
-False
+True
 

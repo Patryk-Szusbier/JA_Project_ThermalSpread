@@ -12,6 +12,9 @@
             <Image 
                 Margin="0"
                 x:Name="matrixImage"
+                MouseMove="matrixImage_MouseMove"
+                MouseUp="matrixImage_MouseUp"
+                MouseDown="matrixImage_MouseDown"
                 Stretch="Fill"
                 Loaded="matrixImage_Loaded"
                 RenderOptions.BitmapScalingMode="NearestNeighbor"
@@ -21,6 +24,9 @@
             <Image 
                 Margin="0"
                 x:Name="drawingImage"
+                MouseMove="matrixImage_MouseMove"
+                MouseUp="matrixImage_MouseUp"
+                MouseDown="matrixImage_MouseDown"
                 Stretch="Fill"
                 Loaded="matrixImage_Loaded"
                 RenderOptions.BitmapScalingMode="NearestNeighbor"

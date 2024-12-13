@@ -16,7 +16,10 @@ public partial class TemperaturesCanvas : UserControl, INotifyPropertyChanged
 
     public static readonly DependencyProperty IsInteractivityEnabledProperty = DependencyProperty.Register(nameof(IsInteractivityEnabled), typeof(bool), typeof(TemperaturesCanvas), new PropertyMetadata(false));
     public static readonly DependencyProperty GradientProperty = DependencyProperty.Register(nameof(Gradient), typeof(Gradient), typeof(TemperaturesCanvas), new PropertyMetadata(null));
+    public static readonly DependencyProperty InteractivityConfigProperty = DependencyProperty.Register(nameof(InteractivityConfig), typeof(InteractivityConfig), typeof(TemperaturesCanvas), new PropertyMetadata(null));
 
+    public event Action<BytePainter>? OnDrawingFinished;
+    public event Action<int, int>? OnSizeChanged;
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public bool IsInteractivityEnabled
@@ -29,6 +32,15 @@ public partial class TemperaturesCanvas : UserControl, INotifyPropertyChanged
     {
         get { return (Gradient)GetValue(GradientProperty); }
         set { SetValue(GradientProperty, value); }
+    }
+
+    public InteractivityConfig InteractivityConfig
+    {
+        get { return (InteractivityConfig)GetValue(InteractivityConfigProperty); }
+        set
+        {
+            SetValue(InteractivityConfigProperty, value);
+        }
     }
 
     TemperaturesMatrix _matrix;
@@ -61,11 +73,11 @@ public partial class TemperaturesCanvas : UserControl, INotifyPropertyChanged
 
     private void matrixImage_Loaded(object sender, RoutedEventArgs e)
     {
-        //bytePainter = new BytePainter(Matrix.Config.Width, Matrix.Config.Height, Gradient);
-        //matrixImage.Source = BytePainter.ConvertBytesArrayToBitmap(Matrix.getByteArray(), Matrix.Config.Width, Matrix.Config.Height, Gradient);
+        bytePainter = new BytePainter(Matrix.Config.Width, Matrix.Config.Height, Gradient);
+        matrixImage.Source = BytePainter.ConvertBytesArrayToBitmap(Matrix.getByteArray(), Matrix.Config.Width, Matrix.Config.Height, Gradient);
 
-        //widthTxtBox.Text = Matrix.Config.Width.ToString();
-        //heightTxtBox.Text = Matrix.Config.Height.ToString();
+        widthTxtBox.Text = Matrix.Config.Width.ToString();
+        heightTxtBox.Text = Matrix.Config.Height.ToString();
     }
 
     private Point getPosition(MouseEventArgs e)
@@ -90,6 +102,56 @@ public partial class TemperaturesCanvas : UserControl, INotifyPropertyChanged
         previewBytePainter = new BytePainter(Matrix.Config.Width, Matrix.Config.Height, Gradient);
     }
 
+    private void matrixImage_MouseUp(object sender, MouseButtonEventArgs e)
+    {
+        if (initialMouseCoords is Point initialPoint)
+        {
+            var currentMouseCoords = getPosition(e);
+
+            switch (InteractivityConfig.Shape)
+            {
+                case InteractivityConfig.ShapeEnum.Rectangle:
+                    bytePainter = new BytePainter(Matrix.Config.Width, Matrix.Config.Height, Gradient);
+                    bytePainter.DrawRectangle(InteractivityConfig.Temperature, initialPoint, currentMouseCoords);
+                    break;
+                case InteractivityConfig.ShapeEnum.StraightLine:
+                    bytePainter = new BytePainter(Matrix.Config.Width, Matrix.Config.Height, Gradient);
+                    bytePainter.DrawLine(InteractivityConfig.Temperature, initialPoint, currentMouseCoords, InteractivityConfig.Thickness);
+                    break;
+                case InteractivityConfig.ShapeEnum.Circle:
+                    bytePainter = new BytePainter(Matrix.Config.Width, Matrix.Config.Height, Gradient);
+                    var radius = (int)Math.Sqrt(Math.Pow(initialPoint.X - currentMouseCoords.X, 2) + Math.Pow(initialPoint.Y - currentMouseCoords.Y, 2));
+                    bytePainter.DrawCircle(InteractivityConfig.Temperature, initialPoint, radius);
+                    break;
+            }
+
+            initialMouseCoords = null;
+            drawingImage.Source = null;
+
+            bytePainter.DrawFrame(0, 1);
+            drawingImage.Source = null;
+
+            OnDrawingFinished?.Invoke(bytePainter);
+        }
+    }
+
+    private void matrixImage_MouseMove(object sender, MouseEventArgs e)
+    {
+        if (initialMouseCoords is Point initialPoint)
+        {
+            var currentMouseCoords = getPosition(e);
+
+            if (InteractivityConfig.Shape == InteractivityConfig.ShapeEnum.FreeForm)
+            {
+                bytePainter.DrawCircle(InteractivityConfig.Temperature, currentMouseCoords, InteractivityConfig.Thickness);
+            }
+
+            previewBytePainter.DrawLine(InteractivityConfig.Temperature, initialPoint, currentMouseCoords, 1);
+
+            drawingImage.Source = previewBytePainter.Bitmap;
+        }
+    }
+
     private void Canvas_SizeChanged(object sender, SizeChangedEventArgs e)
     {
         if (matrixImage.IsLoaded)
@@ -106,6 +168,8 @@ public partial class TemperaturesCanvas : UserControl, INotifyPropertyChanged
 
     private void SaveButton_Click(object sender, RoutedEventArgs e)
     {
+        OnSizeChanged?.Invoke(int.Parse(widthTxtBox.Text), int.Parse(heightTxtBox.Text));
+
         saveButton.Visibility = Visibility.Collapsed;
     }
 

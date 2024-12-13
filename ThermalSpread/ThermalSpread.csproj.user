@@ -7,11 +7,35 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="components\ConfigurationPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="components\ConsoleOutput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="components\FileInput.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="components\InteractivityPanel.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="components\TemperaturesCanvas.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="components\ConfigurationPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="components\ConsoleOutput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="components\FileInput.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="components\InteractivityPanel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="components\SimulationPanel.xaml">
       <SubType>Designer</SubType>
     </Page>

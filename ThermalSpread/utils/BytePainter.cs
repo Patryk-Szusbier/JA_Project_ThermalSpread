@@ -9,11 +9,16 @@ using Point = System.Drawing.Point;
 
 namespace ThermalSpread.utils;
 
-public class BytePainter {
-    private static Color interpolateBetweenColors(Gradient gradient, double factor) {
-        if (factor < 0.0) {
+public class BytePainter
+{
+    private static Color interpolateBetweenColors(Gradient gradient, double factor)
+    {
+        if (factor < 0.0)
+        {
             factor = 0.0;
-        } else if (factor > 1.0) {
+        }
+        else if (factor > 1.0)
+        {
             factor = 1.0;
         }
 
@@ -24,12 +29,14 @@ public class BytePainter {
         );
     }
 
-    public static WriteableBitmap ConvertBytesArrayToBitmap(byte[] byteArray, int width, int height, Gradient gradient) {
+    public static WriteableBitmap ConvertBytesArrayToBitmap(byte[] byteArray, int width, int height, Gradient gradient)
+    {
         var writableImg = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgr32, null);
 
         var pixelData = new byte[width * height * 4];
 
-        for (var i = 0; i < byteArray.Length; i++) {
+        for (var i = 0; i < byteArray.Length; i++)
+        {
             var pixelValue = byteArray[i] / (double)Constants.MaxTemperature;
             var color = interpolateBetweenColors(gradient, pixelValue);
 
@@ -57,15 +64,19 @@ public class BytePainter {
     public Gradient Gradient { get; private set; }
     public WriteableBitmap Bitmap { get; private set; }
     public byte[] BytesArray { get; private set; }
-    public IEnumerable<(Point point, byte value)> GetChanges() {
-        for (var index = 0; index < BytesArray.Length; index += 1) {
-            if (BytesArray[index] != 0) {
+    public IEnumerable<(Point point, byte value)> GetChanges()
+    {
+        for (var index = 0; index < BytesArray.Length; index += 1)
+        {
+            if (BytesArray[index] != 0)
+            {
                 yield return (getPoint(index), BytesArray[index]);
             }
         }
     }
 
-    public BytePainter(int width, int height, Gradient gradient) {
+    public BytePainter(int width, int height, Gradient gradient)
+    {
         Width = width;
         Height = height;
         Bitmap = new WriteableBitmap(width, height, 96, 96, PixelFormats.Bgra32, null);
@@ -73,8 +84,10 @@ public class BytePainter {
         Gradient = gradient;
     }
 
-    public void DrawPixel(byte value, int x, int y) {
-        if (isInRange(x, y)) {
+    public void DrawPixel(byte value, int x, int y)
+    {
+        if (isInRange(x, y))
+        {
             var color = interpolateBetweenColors(Gradient, value / (double)byte.MaxValue);
             var colorData = new byte[] { color.B, color.G, color.R, color.A };
 
@@ -83,15 +96,90 @@ public class BytePainter {
         }
     }
 
-    public void DrawLine(byte value, Point startCoords, Point endCoords, int thickness) {
+    public void DrawRectangle(byte value, Point startCoords, Point endCoords)
+    {
+        var color = interpolateBetweenColors(Gradient, value / (double)byte.MaxValue);
+        var colorData = new byte[] { color.B, color.G, color.R, color.A };
+
+        var leftUpperPoint = new Point(Math.Min(startCoords.X, endCoords.X), Math.Min(startCoords.Y, endCoords.Y));
+        var rightLowerPoint = new Point(Math.Max(startCoords.X, endCoords.X), Math.Max(startCoords.Y, endCoords.Y));
+
+        for (var x = leftUpperPoint.X; x <= rightLowerPoint.X; x += 1)
+        {
+            if (!isXInRange(x))
+            {
+                return;
+            }
+
+            for (var y = leftUpperPoint.Y; y <= rightLowerPoint.Y; y += 1)
+            {
+                if (!isYInRange(y))
+                {
+                    break;
+                }
+
+                BytesArray[getIndex(x, y)] = value;
+                Bitmap.WritePixels(new Int32Rect(x, y, 1, 1), colorData, 4, 0);
+            }
+        }
+    }
+
+    public void DrawCircle(byte value, Point centerCoords, int radius)
+    {
+        void drawHorizontalLine(int startX, int endX, int y)
+        {
+            for (int x = startX; x <= endX; x++)
+            {
+                DrawPixel(value, x, y);
+            }
+        }
+
+        var x = 0;
+        var y = radius;
+        var p = 3 - 2 * radius;
+
+        while (x <= y)
+        {
+            // Draw the horizontal line between two points to fill the circle
+            drawHorizontalLine(centerCoords.X - x, centerCoords.X + x, centerCoords.Y + y);
+            drawHorizontalLine(centerCoords.X - x, centerCoords.X + x, centerCoords.Y - y);
+
+            drawHorizontalLine(centerCoords.X - y, centerCoords.X + y, centerCoords.Y + x);
+            drawHorizontalLine(centerCoords.X - y, centerCoords.X + y, centerCoords.Y - x);
+
+            x++;
+
+            if (p < 0)
+                p += 4 * x + 6;
+            else
+            {
+                y--;
+                p += 4 * (x - y) + 10;
+            }
+        }
+    }
+
+    public void DrawFrame(byte value, int thickness)
+    {
+        DrawLine(value, new Point(0, 0), new Point(Width - 1, 0), thickness);                                 //top edge
+        DrawLine(value, new Point(0, Height - 1), new Point(Width - 1, Height - 1), thickness);           //bottom edge
+        DrawLine(value, new Point(0, 0), new Point(0, Height - 1), thickness);                                //left edge
+        DrawLine(value, new Point(Width - 1, 0), new Point(Width - 1, Height - 1), thickness);            //right edge
+    }
+
+    public void DrawLine(byte value, Point startCoords, Point endCoords, int thickness)
+    {
         var x1 = startCoords.X;
         var y1 = startCoords.Y;
         var x2 = endCoords.X;
         var y2 = endCoords.Y;
 
-        void drawFilledRectangle(int x, int y, int thickness) {
-            for (int i = x; i < x + thickness; i++) {
-                for (int j = y; j < y + thickness; j++) {
+        void drawFilledRectangle(int x, int y, int thickness)
+        {
+            for (int i = x; i < x + thickness; i++)
+            {
+                for (int j = y; j < y + thickness; j++)
+                {
                     DrawPixel(value, i, j);
                 }
             }
@@ -103,18 +191,21 @@ public class BytePainter {
         int sy = (y1 < y2) ? 1 : -1;
         int err = dx - dy;
 
-        while (true) {
+        while (true)
+        {
             drawFilledRectangle(x1 - thickness / 2, y1 - thickness / 2, thickness);
 
             if (x1 == x2 && y1 == y2)
                 break;
 
             int e2 = 2 * err;
-            if (e2 > -dy) {
+            if (e2 > -dy)
+            {
                 err -= dy;
                 x1 += sx;
             }
-            if (e2 < dx) {
+            if (e2 < dx)
+            {
                 err += dx;
                 y1 += sy;
             }

@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ThermalSpread"
         xmlns:components="clr-namespace:ThermalSpread.components"
+        xmlns:converters="clr-namespace:ThermalSpread.converters"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="900">
+        Loaded="Window_Loaded"
+        Title="ThermalSpread" Height="600" Width="900"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <Window.Resources>
+        <converters:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+        <converters:BooleanVisibilityConverter x:Key="BooleanVisibilityConverter" />
+    </Window.Resources>
+
     <Grid Background="#e1e3f3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*"/>
@@ -20,9 +28,15 @@
             </Grid.RowDefinitions>
 
             <Border Grid.RowSpan="2"/>
-            <components:TemperaturesCanvas
+            <components:TemperaturesCanvas 
                 x:Name="temperaturesCanvas"
-                Gradient="{Binding Path=Gradient}"/>
+                Gradient="{Binding Path=Gradient}"
+                OnDrawingFinished="TemperaturesCanvas_OnDrawn"
+                OnSizeChanged="TemperaturesCanvas_OnSizeChanged"
+                InteractivityConfig="{Binding Path=InteractivityConfig, Mode=OneWay}"
+                IsInteractivityEnabled="{Binding Path=IsAnySimulationRunning, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}"/>
+
+            <components:ConsoleOutput Grid.Row="2" x:Name="console"/>
         </Grid>
         <TabControl Background="#e1e3f3" Grid.Column="1">
             
@@ -41,7 +55,11 @@
             </TabItem>
 
             <TabItem Header="Configuration">
-
+                <components:ConfigurationPanel
+                    ConfigFileLoadRequest="ConfigurationPanel_ConfigFileLoadRequest"
+                    ConfigFileWriteRequest="ConfigurationPanel_ConfigFileWriteRequest"
+                    AlfaCoeff="{Binding Path=Matrix.Config.AlfaCoeff, Mode=TwoWay}"
+                    IsEnabled="{Binding Path=IsAnySimulationRunningIsRunning, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}"/>
             </TabItem>
 
             <TabItem Header="Interactivity">
