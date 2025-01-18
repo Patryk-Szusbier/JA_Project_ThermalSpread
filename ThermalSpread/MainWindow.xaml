@@ -63,7 +63,13 @@
             </TabItem>
 
             <TabItem Header="Interactivity">
-
+                <components:InteractivityPanel
+                Gradient="{Binding Path=Gradient, Mode=OneTime}"
+                Thickness="{Binding Path=InteractivityConfig.Thickness, Mode=OneWay}"
+                OnConfigChanged="InteractivityPanel_OnConfigChanged"
+                WidthPx="{Binding Path=Matrix.Config.Width, Mode=OneWay}"
+                HeightPx="{Binding Path=Matrix.Config.Height, Mode=OneWay}"
+                OnPresetSelected="InteractivityPanel_OnPresetSelected"/>
             </TabItem>
         </TabControl>
     </Grid>

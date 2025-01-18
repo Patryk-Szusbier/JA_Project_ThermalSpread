@@ -7,6 +7,7 @@ namespace ThermalSpread.components;
 
 public enum SimulationTarget
 {
+    CPP,
     C_SHARP,
     ASM_VECTOR
 }

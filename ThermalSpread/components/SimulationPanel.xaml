@@ -48,16 +48,18 @@
         </TextBlock>
         <Slider Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Minimum="1" Maximum="20" Value="{Binding Path=NrOfThreads, Mode=TwoWay, ElementName=uc}" TickFrequency="1"/>
 
-        <Grid Grid.Row="2" Grid.ColumnSpan="3" IsEnabled="{Binding Path=IsSimulationRunning, Mode=OneWay, ElementName=uc}">
+        <Grid Grid.Row="2" Grid.ColumnSpan="3" IsEnabled="{Binding Path=IsSimulationRunning, Mode=OneWay, ElementName=uc, Converter={StaticResource InverseBooleanConverter}}">
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <Label>DLL:</Label>
-            <CheckBox Margin="5, 0, 0, 0" IsChecked="{Binding Path=SimulationTarget, Mode=TwoWay, Converter={StaticResource ComparisonConverter}, ConverterParameter=C_SHARP, ElementName=uc}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">C#</CheckBox>
-            <CheckBox Margin="5, 0, 0, 0" IsChecked="{Binding Path=SimulationTarget, Mode=TwoWay, ElementName=uc}"  Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">ASM - vector</CheckBox>
+            <CheckBox Margin="5, 0, 0, 0" IsChecked="{Binding Path=SimulationTarget, Mode=TwoWay, Converter={StaticResource ComparisonConverter}, ConverterParameter=CPP, ElementName=uc}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">C++</CheckBox>
+            <CheckBox Margin="5, 0, 0, 0" IsChecked="{Binding Path=SimulationTarget, Mode=TwoWay, Converter={StaticResource ComparisonConverter}, ConverterParameter=C_SHARP, ElementName=uc}" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">C#</CheckBox>
+            <CheckBox Margin="5, 0, 0, 0" IsChecked="{Binding Path=SimulationTarget, Mode=TwoWay, Converter={StaticResource ComparisonConverter}, ConverterParameter=ASM_VECTOR, ElementName=uc}"  Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center">ASM - vector</CheckBox>
         </Grid>
         <Button Width="100"  Grid.Row="3" Grid.Column="0" Margin="0, 0, 5, 0" VerticalAlignment="Center" Click="StartSimulation_Click" Background="#84c282" Foreground="White">
             <Button.Resources>

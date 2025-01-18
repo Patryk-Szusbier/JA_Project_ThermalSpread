@@ -13,6 +13,7 @@ using System.Windows;
 using System.Windows.Media;
 using Color = System.Windows.Media.Color;
 using Point = System.Drawing.Point;
+using ThermalSpread.simulator.implementations;
 
 namespace ThermalSpread;
 
@@ -21,7 +22,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private Dictionary<string, Func<TemperaturesMatrix, Simulation>> getSimulationsList()
     {
         return new Dictionary<string, Func<TemperaturesMatrix, Simulation>> {
+            { "C++", matrix => new CppSimulation(Matrix.Clone()) },
             { "C#", matrix => new CSharpSimulation(Matrix.Clone()) },
+            { "ASM vector", matrix => new VectorAsmSimulation(Matrix.Clone()) },
         };
     }
 
@@ -75,7 +78,9 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         console.WriteLine(ConsoleOutput.MessageLevel.Info, $"Starting simulation, NrOfThreads={NrOfThreads}");
 
         Simulation =
-            SimulationTarget == SimulationTarget.C_SHARP ? new CSharpSimulation(Matrix) : null;
+            SimulationTarget == SimulationTarget.CPP ? new CppSimulation(Matrix) :
+            SimulationTarget == SimulationTarget.C_SHARP ? new CSharpSimulation(Matrix) : 
+            SimulationTarget == SimulationTarget.ASM_VECTOR ? new VectorAsmSimulation(Matrix) : null;
         Simulation?.Run(
             simulationStarted: result => {
                 IsAnySimulationRunning = true;
@@ -134,7 +139,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         Benchmark = new Benchmark(Matrix, getSimulationsList());
         Benchmark.onSimulationStepFinished += param => {
             Dispatcher.Invoke(new Action(() => {
-                if (UpdateUI) {
+                if (UpdateUI)
+                {
                     temperaturesCanvas.RenderMatrix(param.simulationResult.Matrix);
                 }
 
@@ -155,7 +161,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                 openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
 
                 console.WriteLine(ConsoleOutput.MessageLevel.Success, "Benchmark finished");
-                if (openFileDialog.ShowDialog() == true) {
+                if (openFileDialog.ShowDialog() == true)
+                {
                     File.WriteAllText(openFileDialog.FileName, Benchmark!.GetAsCsvString());
                 }
 
