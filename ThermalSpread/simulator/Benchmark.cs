@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using static ThermalSpread.simulator.Simulation;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static ThermalSpread.simulator.Simulation;
+using ThermalSpread.simulator;
+using System.Diagnostics;
 
-namespace ThermalSpread.simulator;
-
-public record BenchmarkResult(long ElapsedTicks);
+public record BenchmarkResult(double ElapsedMilliseconds);
 
 public class Benchmark : INotifyPropertyChanged
 {
@@ -85,13 +80,17 @@ public class Benchmark : INotifyPropertyChanged
                     await threadsSimulation.Run(
                         simulationStarted: _ => { },
                         stepFinished: (result) => {
+                            // Konwertowanie ElapsedTicks na milisekundy za pomocą Stopwatch.Frequency
+                            var elapsedMs = (result.ElapsedTicks / (double)Stopwatch.Frequency) * 1000;
+
                             if (results.ContainsKey(id))
                             {
-                                records[nrOfThreads] = new BenchmarkResult(records[nrOfThreads].ElapsedTicks + result.ElapsedTicks);
+                                // Zmieniamy sposób dodawania wyniku (teraz zapisujemy w milisekundach)
+                                records[nrOfThreads] = new BenchmarkResult(elapsedMs); // Ograniczamy do 3 miejsc po przecinku
                             }
                             else
                             {
-                                records[nrOfThreads] = new BenchmarkResult(result.ElapsedTicks);
+                                records[nrOfThreads] = new BenchmarkResult(elapsedMs); // Ograniczamy do 3 miejsc po przecinku
                             }
 
                             onSimulationStepFinished?.Invoke((id, result));
@@ -120,8 +119,8 @@ public class Benchmark : INotifyPropertyChanged
                                                   .ToDictionary(innerGroup => innerGroup.Key,
                                                                 innerGroup => innerGroup.Select(item => item.Result).ToList()));
 
-        // Generate CSV
-        var csvContent = "ID,NrOfThreads,ElapsedTicks\n";
+        // Generowanie CSV z milisekundami
+        var csvContent = "ID,NrOfThreads,ElapsedMilliseconds\n";
 
         foreach (var stringKey in groupedData.Keys)
         {
@@ -129,7 +128,8 @@ public class Benchmark : INotifyPropertyChanged
             {
                 foreach (var result in groupedData[stringKey][intKey])
                 {
-                    csvContent += $"{stringKey},{intKey},{result.ElapsedTicks}\n";
+                    // Zapisujemy czas w milisekundach, ograniczając do 3 miejsc po przecinku
+                    csvContent += $"{stringKey},{intKey},{result.ElapsedMilliseconds:F3}\n";
                 }
 
                 csvContent += "\n";

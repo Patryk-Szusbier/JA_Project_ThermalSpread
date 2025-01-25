@@ -46,7 +46,7 @@
                 </MultiBinding>
             </TextBlock.Text>
         </TextBlock>
-        <Slider Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Minimum="1" Maximum="20" Value="{Binding Path=NrOfThreads, Mode=TwoWay, ElementName=uc}" TickFrequency="1"/>
+        <Slider x:Name="slider" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Minimum="1" Maximum="64" Value="{Binding Path=NrOfThreads, Mode=TwoWay, ElementName=uc}" TickFrequency="1"/>
 
         <Grid Grid.Row="2" Grid.ColumnSpan="3" IsEnabled="{Binding Path=IsSimulationRunning, Mode=OneWay, ElementName=uc, Converter={StaticResource InverseBooleanConverter}}">
             <Grid.ColumnDefinitions>

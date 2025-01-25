@@ -14,6 +14,9 @@ using System.Windows.Media;
 using Color = System.Windows.Media.Color;
 using Point = System.Drawing.Point;
 using ThermalSpread.simulator.implementations;
+using System.Diagnostics;
+using System.Runtime.InteropServices;
+using System.Management;
 
 namespace ThermalSpread;
 
@@ -23,7 +26,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         return new Dictionary<string, Func<TemperaturesMatrix, Simulation>> {
             { "C++", matrix => new CppSimulation(Matrix.Clone()) },
-            { "C#", matrix => new CSharpSimulation(Matrix.Clone()) },
+           { "C#", matrix => new CSharpSimulation(Matrix.Clone()) },
             { "ASM vector", matrix => new VectorAsmSimulation(Matrix.Clone()) },
         };
     }
@@ -58,8 +61,46 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         Matrix = getDefaultTemperaturesMatrix();
 
         InitializeComponent();
+
+        // Sprawdzenie, czy procesor obsługuje AVX-512
+        if (!IsAVX512Supported())
+        {
+            console.WriteLine(ConsoleOutput.MessageLevel.Error, "AVX-512 is not supported on this processor.");
+        }
+        else
+        {
+            console.WriteLine(ConsoleOutput.MessageLevel.Info, "AVX-512 is supported.");
+        }
+
         console.WriteLine(ConsoleOutput.MessageLevel.Info, "Welcome to simple Thermal simulator");
         console.WriteLine(ConsoleOutput.MessageLevel.Info, "Go to interactivity section, select preset and start simulation");
+    }
+
+    private bool IsAVX512Supported()
+    {
+        try
+        {
+            // Pobieranie informacji o procesorze
+            var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_Processor");
+
+            foreach (ManagementObject queryObj in searcher.Get())
+            {
+                // Sprawdzanie, czy wśród cech procesora znajduje się AVX-512
+                string processorId = queryObj["ProcessorId"]?.ToString();
+                string caption = queryObj["Caption"]?.ToString();
+                string instructionSet = queryObj["InstructionSet"]?.ToString();
+
+                if (!string.IsNullOrEmpty(instructionSet) && instructionSet.Contains("AVX512"))
+                {
+                    return true;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+        }
+
+        return false;
     }
 
     private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -79,7 +120,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         Simulation =
             SimulationTarget == SimulationTarget.CPP ? new CppSimulation(Matrix) :
-            SimulationTarget == SimulationTarget.C_SHARP ? new CSharpSimulation(Matrix) : 
+            SimulationTarget == SimulationTarget.C_SHARP ? new CSharpSimulation(Matrix) :
             SimulationTarget == SimulationTarget.ASM_VECTOR ? new VectorAsmSimulation(Matrix) : null;
         Simulation?.Run(
             simulationStarted: result => {
@@ -95,7 +136,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                         temperaturesCanvas.RenderMatrix(result.Matrix);
                     }
 
-                    console.WriteLine(ConsoleOutput.MessageLevel.Info, $"Simulation: Step finished, Step={result.Step}, ElapsedTicks={result.ElapsedTicks}, Finished={result.IsEdgeConditionMet}");
+                    var elapsedMs = (result.ElapsedTicks / (double)Stopwatch.Frequency) * 1000;
+                    console.WriteLine(ConsoleOutput.MessageLevel.Info, $"Simulation: Step finished, Step={result.Step}, ElapsedMilliseconds={elapsedMs:F2}, Finished={result.IsEdgeConditionMet}");
                 }));
             },
         simulationFinished: result => {
@@ -106,7 +148,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     temperaturesCanvas.RenderMatrix(result.Matrix);
                 }
 
-                console.WriteLine(ConsoleOutput.MessageLevel.Success, $"Simulation: Finished, NrOfSteps={result.NrOfSteps}, ElapsedTicks={result.TotalElapsedTicks}");
+                var totalElapsedMs = (result.TotalElapsedTicks / (double)Stopwatch.Frequency) * 1000;
+                console.WriteLine(ConsoleOutput.MessageLevel.Success, $"Simulation: Finished, NrOfSteps={result.NrOfSteps}, Milliseconds={totalElapsedMs:F2}");
             }));
         },
         NrOfThreads, MinStepMs);
@@ -144,7 +187,8 @@ public partial class MainWindow : Window, INotifyPropertyChanged
                     temperaturesCanvas.RenderMatrix(param.simulationResult.Matrix);
                 }
 
-                console.WriteLine(ConsoleOutput.MessageLevel.Success, $"Benchmark step for {param.simulationId} finished | NrOfThreads={param.simulationResult.NrOfThreads} | ElapsedTicks={param.simulationResult.ElapsedTicks}");
+                var elapsedMs = (param.simulationResult.ElapsedTicks / (double)Stopwatch.Frequency) * 1000;
+                console.WriteLine(ConsoleOutput.MessageLevel.Success, $"Benchmark step for {param.simulationId} finished | NrOfThreads={param.simulationResult.NrOfThreads} | ElapsedMilliseconds={elapsedMs:F2}");
             }));
         };
         Benchmark.onSingleSimulationBenchMarkFinished += param => {
@@ -171,7 +215,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             }));
         };
 
-        Benchmark.Run(20);
+        Benchmark.Run(64);
 #endif
     }
 

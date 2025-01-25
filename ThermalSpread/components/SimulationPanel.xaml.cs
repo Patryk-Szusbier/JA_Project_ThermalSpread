@@ -19,6 +19,7 @@ public partial class SimulationPanel : UserControl, INotifyPropertyChanged
     public SimulationPanel()
     {
         InitializeComponent();
+
     }
 
     public static readonly DependencyProperty SimulationTargetProperty = DependencyProperty.Register(nameof(SimulationTarget), typeof(SimulationTarget), typeof(SimulationPanel), new PropertyMetadata(null));
