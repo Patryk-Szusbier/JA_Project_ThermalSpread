@@ -11,44 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="images\circle.png" />
-    <None Remove="images\freeform.png" />
-    <None Remove="images\pen.png" />
-    <None Remove="images\rectangle.png" />
-    <None Remove="images\resize-icon.png" />
-    <None Remove="images\rubber.png" />
-    <None Remove="images\save-icon.png" />
-    <None Remove="images\straight.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="images\circle.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\freeform.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\pen.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\rectangle.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\resize-icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\rubber.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\save-icon.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="images\straight.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="System.Management" Version="9.0.1" />
   </ItemGroup>
 

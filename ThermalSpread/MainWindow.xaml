@@ -39,7 +39,7 @@
             <components:ConsoleOutput Grid.Row="2" x:Name="console"/>
         </Grid>
         <TabControl Background="#e1e3f3" Grid.Column="1">
-            
+
             <TabItem Header="Simulation">
                 <components:SimulationPanel
                     UpdateUI="{Binding Path=UpdateUI, Mode=TwoWay}"
@@ -51,15 +51,7 @@
                     OnStartBenchmark="SimulationPanel_OnStartBenchmark"
                     OnReset="SimulationPanel_OnReset"
                     IsSimulationRunning="{Binding Path=IsAnySimulationRunning, Mode=OneWay}"/>
-            
-            </TabItem>
 
-            <TabItem Header="Configuration">
-                <components:ConfigurationPanel
-                    ConfigFileLoadRequest="ConfigurationPanel_ConfigFileLoadRequest"
-                    ConfigFileWriteRequest="ConfigurationPanel_ConfigFileWriteRequest"
-                    AlfaCoeff="{Binding Path=Matrix.Config.AlfaCoeff, Mode=TwoWay}"
-                    IsEnabled="{Binding Path=IsAnySimulationRunningIsRunning, Converter={StaticResource InverseBooleanConverter}, Mode=OneWay}"/>
             </TabItem>
 
             <TabItem Header="Interactivity">
