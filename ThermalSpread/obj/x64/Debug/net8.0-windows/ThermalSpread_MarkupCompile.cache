@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Debug\net8.0-windows\
+C:\Users\Lenovo\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Debug\net8.0-windows\
 ThermalSpread
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\App.xaml
-7-241597665
+C:\Users\Lenovo\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\App.xaml
+51982931412
 
-23905785472
-1981124507420
-components\ConfigurationPanel.xaml;components\ConsoleOutput.xaml;components\FileInput.xaml;components\InteractivityPanel.xaml;components\SimulationPanel.xaml;components\TemperaturesCanvas.xaml;MainWindow.xaml;
+22-1760647268
+19931361352
+components\ConsoleOutput.xaml;components\InteractivityPanel.xaml;components\SimulationPanel.xaml;components\TemperaturesCanvas.xaml;MainWindow.xaml;
 
 False
 

@@ -25,13 +25,13 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private Dictionary<string, Func<TemperaturesMatrix, Simulation>> getSimulationsList()
     {
         return new Dictionary<string, Func<TemperaturesMatrix, Simulation>> {
-            { "C++", matrix => new CppSimulation(Matrix.Clone()) },
+           { "ASM vector", matrix => new VectorAsmSimulation(Matrix.Clone()) },
            { "C#", matrix => new CSharpSimulation(Matrix.Clone()) },
-            { "ASM vector", matrix => new VectorAsmSimulation(Matrix.Clone()) },
+            { "C++", matrix => new CppSimulation(Matrix.Clone()) },
         };
     }
 
-    private static TemperaturesMatrix getDefaultTemperaturesMatrix(IEnumerable<(Point point, byte value)>? initialTemperatures = null, IEnumerable<(Point point, byte value)>? constantTemperatures = null, int width = 64, int height = 64)
+    private static TemperaturesMatrix getDefaultTemperaturesMatrix(IEnumerable<(Point point, byte value)>? initialTemperatures = null, IEnumerable<(Point point, byte value)>? constantTemperatures = null, int width = 128, int height = 128)
     {
         var newInitialTemperatures = initialTemperatures ?? new List<(Point point, byte value)>();
         var newConstantTemperatures = constantTemperatures ?? new List<(Point point, byte value)>();
@@ -45,12 +45,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     public bool IsAnySimulationRunning { get; set; } = false;
 
-    public SimulationTarget SimulationTarget { get; set; } = SimulationTarget.ASM_VECTOR;
+    public SimulationTarget SimulationTarget { get; set; } = SimulationTarget.CPP;
 
     public Gradient Gradient { get; } = new Gradient((Color)ColorConverter.ConvertFromString("#0000FF"), (Color)ColorConverter.ConvertFromString("#FF0000"));
     public bool UpdateUI { get; set; } = true;
     public int MinStepMs { get; set; } = 0;
-    public int NrOfThreads { get; set; } = 1;
+    public int NrOfThreads { get; set; } = Environment.ProcessorCount;
 
     public TemperaturesMatrix Matrix { get; set; }
     public Simulation? Simulation { get; set; } = null;
@@ -61,7 +61,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         Matrix = getDefaultTemperaturesMatrix();
 
         InitializeComponent();
-
         // Sprawdzenie, czy procesor obsługuje AVX-512
         if (!IsAVX512Supported())
         {
@@ -119,9 +118,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         console.WriteLine(ConsoleOutput.MessageLevel.Info, $"Starting simulation, NrOfThreads={NrOfThreads}");
 
         Simulation =
-            SimulationTarget == SimulationTarget.CPP ? new CppSimulation(Matrix) :
-            SimulationTarget == SimulationTarget.C_SHARP ? new CSharpSimulation(Matrix) :
-            SimulationTarget == SimulationTarget.ASM_VECTOR ? new VectorAsmSimulation(Matrix) : null;
+            SimulationTarget == SimulationTarget.ASM_VECTOR ? new VectorAsmSimulation(Matrix) : 
+        SimulationTarget == SimulationTarget.CPP ? new CppSimulation(Matrix) :
+            SimulationTarget == SimulationTarget.C_SHARP ? new CSharpSimulation(Matrix): null;
+
         Simulation?.Run(
             simulationStarted: result => {
                 IsAnySimulationRunning = true;
