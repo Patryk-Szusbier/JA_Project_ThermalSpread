@@ -51,52 +51,54 @@ public class Benchmark : INotifyPropertyChanged
         });
     }
 
-    public Task Run(int maxNrOfThreads)
+    public void Run(int maxNrOfThreads)
     {
         cancelTokenTransmitter = new CancellationTokenSource();
         var cancelTokenReceiver = cancelTokenTransmitter.Token;
 
-        benchmarkTask = Task.Run(async () => {
+        var benchmarkThread = new Thread(() =>
+        {
             foreach (var (id, simulationConstructor) in simulations)
             {
                 var records = new Dictionary<int, BenchmarkResult>();
 
                 if (cancelTokenReceiver.IsCancellationRequested)
                 {
-                    benchmarkTask = null;
                     return;
                 }
 
-                for (var nrOfThreads = 1; nrOfThreads < maxNrOfThreads; nrOfThreads += 1)
+                var threadsSimulation = simulationConstructor(matrix);
+                var threads = new List<Thread>();
+
+                for (var nrOfThreads = 0; nrOfThreads < maxNrOfThreads; nrOfThreads++)
                 {
                     if (cancelTokenReceiver.IsCancellationRequested)
                     {
-                        benchmarkTask = null;
                         return;
                     }
 
-                    var threadsSimulation = simulationConstructor(matrix);
+                    int threadIndex = nrOfThreads; // Unikamy problemów z zakresami zmiennych w lambdach
+                    var thread = new Thread(() =>
+                    {
+                        threadsSimulation.Run(
+                            simulationStarted: _ => { },
+                            stepFinished: (result) => {
+                                var elapsedMs = (result.ElapsedTicks / (double)Stopwatch.Frequency) * 1000;
+                                lock (records)
+                                {
+                                    records[threadIndex + 1] = new BenchmarkResult(elapsedMs);
+                                }
+                                onSimulationStepFinished?.Invoke((id, result));
+                            }, _ => { }, 1, minStepMs: 0);
+                    });
 
-                    await threadsSimulation.Run(
-                        simulationStarted: _ => { },
-                        stepFinished: (result) => {
-                            // Konwertowanie ElapsedTicks na milisekundy za pomocą Stopwatch.Frequency
-                            var elapsedMs = (result.ElapsedTicks / (double)Stopwatch.Frequency) * 1000;
+                    threads.Add(thread);
+                    thread.Start();
+                }
 
-                            if (results.ContainsKey(id))
-                            {
-                                // Zmieniamy sposób dodawania wyniku (teraz zapisujemy w milisekundach)
-                                records[nrOfThreads] = new BenchmarkResult(elapsedMs); // Ograniczamy do 3 miejsc po przecinku
-                            }
-                            else
-                            {
-                                records[nrOfThreads] = new BenchmarkResult(elapsedMs); // Ograniczamy do 3 miejsc po przecinku
-                            }
-
-                            onSimulationStepFinished?.Invoke((id, result));
-                        }, _ => { }, nrOfThreads, minStepMs: 0);
-
-                    onSimulationThreadFinished?.Invoke((id, nrOfThreads, records[nrOfThreads]));
+                foreach (var thread in threads)
+                {
+                    thread.Join();
                 }
 
                 results[id] = records;
@@ -104,11 +106,11 @@ public class Benchmark : INotifyPropertyChanged
             }
 
             onAllSimulationsBenchMarkFinished?.Invoke(results);
-            benchmarkTask = null;
         });
 
-        return benchmarkTask;
+        benchmarkThread.Start();
     }
+
 
     public string GetAsCsvString()
     {

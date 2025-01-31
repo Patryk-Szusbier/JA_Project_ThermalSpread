@@ -106,53 +106,65 @@ public abstract class Simulation : INotifyPropertyChanged
     }
 
     volatile bool areAllEdgeConditionsMet = true;
-    private Task<SimulationStepResult> runStep(int nrOfThreads, long minStepMs)
+    private SimulationStepResult runStep(int nrOfThreads, long minStepMs)
     {
         var (readMatrix, writeMatrix) = getMatrices();
         var config = readMatrix.Config;
 
-        return Task.Run(async () => {
-            areAllEdgeConditionsMet = true;
+        areAllEdgeConditionsMet = true;
 
-            var actualHeight = config.Height - 2;
+        var actualHeight = config.Height - 2;
 
-            var (mul, shift) = MagicMultplicationCoefficients[matrixA.Config.AlfaCoeff];
+        var (mul, shift) = MagicMultplicationCoefficients[matrixA.Config.AlfaCoeff];
 
-            var readByteArray = readMatrix.getByteArray();
-            var writeByteArray = writeMatrix.getByteArray();
+        var readByteArray = readMatrix.getByteArray();
+        var writeByteArray = writeMatrix.getByteArray();
 
-            var stopwatch = new Stopwatch();
-            stopwatch.Start();
-            await Task.WhenAll(Enumerable.Range(0, nrOfThreads)
-              .Select(i => Task.Run(() => {
-                  var result = runSingleStep(
-                      readByteArray,
-                      writeByteArray,
-                      config.Width,
-                      actualHeight,
-                      _chunks[i].from, _chunks[i].to, mul, shift);
+        var stopwatch = new Stopwatch();
+        stopwatch.Start();
 
-                  if (!result && areAllEdgeConditionsMet)
-                  {
-                      areAllEdgeConditionsMet = false;
-                  }
-              })));
+        var threads = new List<Thread>();
 
-            stopwatch.Stop();
+        for (int i = 0; i < nrOfThreads; i++)
+        {
+            int index = i; // Unikamy problemów z zakresami zmiennych w lambdach
+            var thread = new Thread(() => {
+                var result = runSingleStep(
+                    readByteArray,
+                    writeByteArray,
+                    config.Width,
+                    actualHeight,
+                    _chunks[index].from, _chunks[index].to, mul, shift);
 
-            if (minStepMs > stopwatch.ElapsedMilliseconds)
-            {
-                Thread.Sleep((int)(minStepMs - stopwatch.ElapsedMilliseconds));
-            }
+                if (!result && areAllEdgeConditionsMet)
+                {
+                    areAllEdgeConditionsMet = false;
+                }
+            });
+            threads.Add(thread);
+            thread.Start();
+        }
 
-            foreach (var (point, temperature) in writeMatrix.Config.ConstantTemperatures)
-            {
-                writeMatrix.setPoint(temperature, point);
-            }
+        foreach (var thread in threads)
+        {
+            thread.Join();
+        }
 
-            return new SimulationStepResult(writeMatrix, stopwatch.ElapsedTicks, nrOfThreads, areAllEdgeConditionsMet, runsCounter);
-        });
+        stopwatch.Stop();
+
+        if (minStepMs > stopwatch.ElapsedMilliseconds)
+        {
+            Thread.Sleep((int)(minStepMs - stopwatch.ElapsedMilliseconds));
+        }
+
+        foreach (var (point, temperature) in writeMatrix.Config.ConstantTemperatures)
+        {
+            writeMatrix.setPoint(temperature, point);
+        }
+
+        return new SimulationStepResult(writeMatrix, stopwatch.ElapsedTicks, nrOfThreads, areAllEdgeConditionsMet, runsCounter);
     }
+
 
     public Simulation(TemperaturesMatrix temperaturesMatrix)
     {
@@ -228,7 +240,7 @@ public abstract class Simulation : INotifyPropertyChanged
 
     protected abstract bool runSingleStep(Temperature[] readData, Temperature[] writeData, int width, int height, int startColumn, int endColumn, ushort mul, int shift);
 
-    public Task Run(Action<SimulationStartInfo> simulationStarted, Action<SimulationStepResult> stepFinished, Action<SimulationResult> simulationFinished, int nrOfThreads, long minStepMs)
+    public void Run(Action<SimulationStartInfo> simulationStarted, Action<SimulationStepResult> stepFinished, Action<SimulationResult> simulationFinished, int nrOfThreads, long minStepMs)
     {
         _chunks = divideMatrix(matrixA.Config.Width, nrOfThreads);
         simulationStarted(new SimulationStartInfo(matrixA, nrOfThreads, _chunks));
@@ -239,12 +251,13 @@ public abstract class Simulation : INotifyPropertyChanged
 
         long totalElapsedTicks = 0;
 
-        simulationTask = Task.Run((async () => {
+        var simulationThread = new Thread(() =>
+        {
             SimulationStepResult step;
 
             do
             {
-                step = await runStep(nrOfThreads, minStepMs);
+                step = runStep(nrOfThreads, minStepMs);
                 runsCounter += 1;
 
                 if (channel.Reader.Count > 0)
@@ -264,18 +277,17 @@ public abstract class Simulation : INotifyPropertyChanged
 
                 if (cancelTokenReceiver.IsCancellationRequested)
                 {
-                    simulationTask = null;
                     return;
                 }
 
                 stepFinished(step);
                 totalElapsedTicks += step.ElapsedTicks;
             } while (!step.IsEdgeConditionMet);
-            simulationTask = null;
 
             simulationFinished(new SimulationResult(step.Matrix, totalElapsedTicks, step.Step));
-        }));
+        });
 
-        return simulationTask;
+        simulationThread.Start();
     }
+
 }

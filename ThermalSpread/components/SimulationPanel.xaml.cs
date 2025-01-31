@@ -16,6 +16,7 @@ public partial class SimulationPanel : UserControl, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
+
     public SimulationPanel()
     {
         InitializeComponent();
