@@ -31,7 +31,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         };
     }
 
-    private static TemperaturesMatrix getDefaultTemperaturesMatrix(IEnumerable<(Point point, byte value)>? initialTemperatures = null, IEnumerable<(Point point, byte value)>? constantTemperatures = null, int width = 128, int height = 128)
+    private static TemperaturesMatrix getDefaultTemperaturesMatrix(IEnumerable<(Point point, byte value)>? initialTemperatures = null, IEnumerable<(Point point, byte value)>? constantTemperatures = null, int width = 64, int height = 64)
     {
         var newInitialTemperatures = initialTemperatures ?? new List<(Point point, byte value)>();
         var newConstantTemperatures = constantTemperatures ?? new List<(Point point, byte value)>();
@@ -61,18 +61,19 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         Matrix = getDefaultTemperaturesMatrix();
 
         InitializeComponent();
+        console.WriteLine(ConsoleOutput.MessageLevel.Info, "Welcome to simple Thermal simulator");
+        console.WriteLine(ConsoleOutput.MessageLevel.Info, "Go to interactivity section, select preset and start simulation");
         // Sprawdzenie, czy procesor obsługuje AVX-512
         if (!IsAVX512Supported())
         {
-            console.WriteLine(ConsoleOutput.MessageLevel.Error, "AVX-512 is not supported on this processor.");
+            console.WriteLine(ConsoleOutput.MessageLevel.Error, "AVX-512 is not supported on this processor. Assembler DLL is been disable");
         }
         else
         {
             console.WriteLine(ConsoleOutput.MessageLevel.Info, "AVX-512 is supported.");
         }
 
-        console.WriteLine(ConsoleOutput.MessageLevel.Info, "Welcome to simple Thermal simulator");
-        console.WriteLine(ConsoleOutput.MessageLevel.Info, "Go to interactivity section, select preset and start simulation");
+        
     }
 
     private bool IsAVX512Supported()
@@ -119,7 +120,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
         Simulation =
             SimulationTarget == SimulationTarget.ASM_VECTOR ? new VectorAsmSimulation(Matrix) : 
-        SimulationTarget == SimulationTarget.CPP ? new CppSimulation(Matrix) :
+            SimulationTarget == SimulationTarget.CPP ? new CppSimulation(Matrix) :
             SimulationTarget == SimulationTarget.C_SHARP ? new CSharpSimulation(Matrix): null;
 
         Simulation?.Run(

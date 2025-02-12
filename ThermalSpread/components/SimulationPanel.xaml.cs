@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Runtime.Intrinsics.X86;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,11 +17,9 @@ public partial class SimulationPanel : UserControl, INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
-
     public SimulationPanel()
     {
         InitializeComponent();
-
     }
 
     public static readonly DependencyProperty SimulationTargetProperty = DependencyProperty.Register(nameof(SimulationTarget), typeof(SimulationTarget), typeof(SimulationPanel), new PropertyMetadata(null));
@@ -59,19 +58,28 @@ public partial class SimulationPanel : UserControl, INotifyPropertyChanged
         set { SetValue(NrOfThreadsProperty, value); }
     }
 
+    // Właściwość sprawdzająca czy AVX-512 jest wspierane
+    public bool IsAVX512Supported { get; } = CheckAVX512Support();
+
+    private static bool CheckAVX512Support()
+    {
+        return Avx512F.IsSupported; // Sprawdza czy AVX-512 jest obsługiwane
+    }
+
     public event EventHandler? OnStart;
     public event EventHandler? OnStop;
-
     public event EventHandler? OnStartBenchmark;
-
     public event EventHandler? OnReset;
+
     private void StartSimulation_Click(object sender, RoutedEventArgs e)
     {
+        // Wywołanie eventu OnStart, jeśli jest przypisany
         OnStart?.Invoke(sender, e);
     }
 
     private void EndSimulation_Click(object sender, RoutedEventArgs e)
     {
+        // Wywołanie eventu OnStop, jeśli jest przypisany
         OnStop?.Invoke(sender, e);
     }
 

@@ -1,58 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\",
+  "WorkspaceRootPath": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\components\\simulationpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\components\\simulationpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\components\\simulationpanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\components\\simulationpanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\simulator\\simulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\patryk\\documents\\github\\ja_project_thermalspread\\thermalspread\\simulator\\simulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\simulator\\simulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\simulator\\benchmark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\simulator\\benchmark.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\patryk\\documents\\github\\ja_project_thermalspread\\thermalspread\\components\\simulationpanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\components\\simulationpanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\patryk\\documents\\github\\ja_project_thermalspread\\thermalspread\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\utils\\bytepainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\utils\\bytepainter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\patryk\\documents\\github\\ja_project_thermalspread\\thermalspread\\components\\simulationpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\components\\simulationpanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\simulator\\temperaturesmatrix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\simulator\\temperaturesmatrix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\patryk\\documents\\github\\ja_project_thermalspread\\thermalspread\\components\\temperaturescanvas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\components\\temperaturescanvas.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\simulator\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\simulator\\config.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\patryk\\documents\\github\\ja_project_thermalspread\\thermalspread\\converters\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\converters\\inversebooleanconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\components\\interactivitypanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\components\\interactivitypanel.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\components\\interactivitypanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\components\\interactivitypanel.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\patryk\\documents\\github\\ja_project_thermalspread\\thermalspread\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\simulator\\constans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\simulator\\constans.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|c:\\users\\lenovo\\documents\\github\\ja_project_thermalspread\\thermalspread\\simulator\\implementations\\cppsimulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EF02CEE8-4F24-40D1-BFC9-F161489206D3}|ThermalSpread\\ThermalSpread.csproj|solutionrelative:thermalspread\\simulator\\implementations\\cppsimulation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,12 +38,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
@@ -77,162 +49,92 @@
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Simulator.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Simulator.cs",
+              "DocumentMoniker": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Simulator.cs",
               "RelativeDocumentMoniker": "ThermalSpread\\simulator\\Simulator.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Simulator.cs",
+              "ToolTip": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Simulator.cs",
               "RelativeToolTip": "ThermalSpread\\simulator\\Simulator.cs",
-              "ViewState": "AgIAAOcAAAAAAAAAAAAYwO4AAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAiwCkBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T09:33:08.51Z",
+              "WhenOpened": "2025-02-12T12:26:16.912Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TemperaturesCanvas.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\TemperaturesCanvas.xaml.cs",
+              "RelativeDocumentMoniker": "ThermalSpread\\components\\TemperaturesCanvas.xaml.cs",
+              "ToolTip": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\TemperaturesCanvas.xaml.cs",
+              "RelativeToolTip": "ThermalSpread\\components\\TemperaturesCanvas.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-12T12:26:13.146Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "BytePainter.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\utils\\BytePainter.cs",
-              "RelativeDocumentMoniker": "ThermalSpread\\utils\\BytePainter.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\utils\\BytePainter.cs",
-              "RelativeToolTip": "ThermalSpread\\utils\\BytePainter.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Title": "InverseBooleanConverter.cs",
+              "DocumentMoniker": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\converters\\InverseBooleanConverter.cs",
+              "RelativeDocumentMoniker": "ThermalSpread\\converters\\InverseBooleanConverter.cs",
+              "ToolTip": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\converters\\InverseBooleanConverter.cs",
+              "RelativeToolTip": "ThermalSpread\\converters\\InverseBooleanConverter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T10:08:55.371Z"
+              "WhenOpened": "2025-02-12T12:26:10.65Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "InteractivityPanel.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\InteractivityPanel.xaml",
-              "RelativeDocumentMoniker": "ThermalSpread\\components\\InteractivityPanel.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\InteractivityPanel.xaml",
-              "RelativeToolTip": "ThermalSpread\\components\\InteractivityPanel.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-27T10:09:17.354Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Benchmark.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Benchmark.cs",
-              "RelativeDocumentMoniker": "ThermalSpread\\simulator\\Benchmark.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Benchmark.cs",
-              "RelativeToolTip": "ThermalSpread\\simulator\\Benchmark.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAkwGYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "ThermalSpread\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\MainWindow.xaml.cs",
+              "RelativeToolTip": "ThermalSpread\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAswIwAAACZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T09:33:20.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-12T12:16:40.077Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "TemperaturesMatrix.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\TemperaturesMatrix.cs",
-              "RelativeDocumentMoniker": "ThermalSpread\\simulator\\TemperaturesMatrix.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\TemperaturesMatrix.cs",
-              "RelativeToolTip": "ThermalSpread\\simulator\\TemperaturesMatrix.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAIwE4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T09:58:39.173Z"
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "ThermalSpread\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\MainWindow.xaml",
+              "RelativeToolTip": "ThermalSpread\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-12T12:13:10.86Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "SimulationPanel.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\SimulationPanel.xaml",
+              "DocumentMoniker": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\SimulationPanel.xaml",
               "RelativeDocumentMoniker": "ThermalSpread\\components\\SimulationPanel.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\SimulationPanel.xaml",
+              "ToolTip": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\SimulationPanel.xaml",
               "RelativeToolTip": "ThermalSpread\\components\\SimulationPanel.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-27T09:30:13.136Z",
+              "WhenOpened": "2025-02-11T20:24:05.881Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "SimulationPanel.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\SimulationPanel.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\SimulationPanel.xaml.cs",
               "RelativeDocumentMoniker": "ThermalSpread\\components\\SimulationPanel.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\SimulationPanel.xaml.cs",
+              "ToolTip": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\SimulationPanel.xaml.cs",
               "RelativeToolTip": "ThermalSpread\\components\\SimulationPanel.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T23:17:50.072Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "InteractivityPanel.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\InteractivityPanel.xaml.cs",
-              "RelativeDocumentMoniker": "ThermalSpread\\components\\InteractivityPanel.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\components\\InteractivityPanel.xaml.cs",
-              "RelativeToolTip": "ThermalSpread\\components\\InteractivityPanel.xaml.cs",
-              "ViewState": "AgIAANUAAAAAAAAAAAASwOQAAACEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T10:09:22.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "ThermalSpread\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\MainWindow.xaml.cs",
-              "RelativeToolTip": "ThermalSpread\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAHEAAAAAAAAAAAAMwHwAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T09:36:00.785Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "ThermalSpread\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\MainWindow.xaml",
-              "RelativeToolTip": "ThermalSpread\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-01-27T09:34:33.126Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Config.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Config.cs",
-              "RelativeDocumentMoniker": "ThermalSpread\\simulator\\Config.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Config.cs",
-              "RelativeToolTip": "ThermalSpread\\simulator\\Config.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAIwC4AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T09:34:25.989Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CppSimulation.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\implementations\\CppSimulation.cs",
-              "RelativeDocumentMoniker": "ThermalSpread\\simulator\\implementations\\CppSimulation.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\implementations\\CppSimulation.cs",
-              "RelativeToolTip": "ThermalSpread\\simulator\\implementations\\CppSimulation.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-23T23:32:11.23Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Constans.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Constans.cs",
-              "RelativeDocumentMoniker": "ThermalSpread\\simulator\\Constans.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\simulator\\Constans.cs",
-              "RelativeToolTip": "ThermalSpread\\simulator\\Constans.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-27T10:03:15.713Z"
+              "WhenOpened": "2025-02-11T20:23:58.158Z"
             }
           ]
         }

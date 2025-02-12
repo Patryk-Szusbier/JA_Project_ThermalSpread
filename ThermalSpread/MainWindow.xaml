@@ -42,16 +42,15 @@
 
             <TabItem Header="Simulation">
                 <components:SimulationPanel
-                    UpdateUI="{Binding Path=UpdateUI, Mode=TwoWay}"
-                    MinStepMs="{Binding Path=MinStepMs, Mode=TwoWay}"
-                    NrOfThreads="{Binding Path=NrOfThreads, Mode=TwoWay}"
-                    SimulationTarget="{Binding Path=SimulationTarget, Mode=TwoWay}"
-                    OnStart="SimulationPanel_OnStart" 
-                    OnStop="SimulationPanel_OnStop" 
-                    OnStartBenchmark="SimulationPanel_OnStartBenchmark"
-                    OnReset="SimulationPanel_OnReset"
-                    IsSimulationRunning="{Binding Path=IsAnySimulationRunning, Mode=OneWay}"/>
-
+        UpdateUI="{Binding Path=UpdateUI, Mode=TwoWay}"
+        MinStepMs="{Binding Path=MinStepMs, Mode=TwoWay}"
+        NrOfThreads="{Binding Path=NrOfThreads, Mode=TwoWay}"
+        SimulationTarget="{Binding Path=SimulationTarget, Mode=TwoWay}"
+        OnStart="SimulationPanel_OnStart" 
+        OnStop="SimulationPanel_OnStop" 
+        OnStartBenchmark="SimulationPanel_OnStartBenchmark"
+        OnReset="SimulationPanel_OnReset"
+        IsSimulationRunning="{Binding Path=IsAnySimulationRunning, Mode=OneWay}"/>
             </TabItem>
 
             <TabItem Header="Interactivity">

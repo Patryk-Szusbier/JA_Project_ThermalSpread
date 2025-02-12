@@ -110,25 +110,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lenovo\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Patryk\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\ThermalSpread.csproj",
+      "projectUniqueName": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\ThermalSpread.csproj",
       "projectName": "ThermalSpread",
-      "projectPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\ThermalSpread.csproj",
-      "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lenovo\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\obj\\",
+      "projectPath": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\ThermalSpread.csproj",
+      "packagesPath": "C:\\Users\\Patryk\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Patryk\\Documents\\GitHub\\JA_Project_ThermalSpread\\ThermalSpread\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Patryk\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -196,8 +196,9 @@ public abstract class Simulation : INotifyPropertyChanged
         }
 
         await Task.Run(() => {
-            cancelTokenTransmitter?.Cancel();
+            cancelTokenTransmitter?.Cancel(); // Anulowanie symulacji
 
+            // Czekamy na zakończenie zadania (wątku)
             while (simulationTask != null) ;
         });
     }
@@ -246,7 +247,7 @@ public abstract class Simulation : INotifyPropertyChanged
         simulationStarted(new SimulationStartInfo(matrixA, nrOfThreads, _chunks));
         runsCounter = 0;
 
-        cancelTokenTransmitter = new CancellationTokenSource();
+        cancelTokenTransmitter = new CancellationTokenSource(); // Utwórz token anulowania
         var cancelTokenReceiver = cancelTokenTransmitter.Token;
 
         long totalElapsedTicks = 0;
@@ -257,9 +258,16 @@ public abstract class Simulation : INotifyPropertyChanged
 
             do
             {
-                step = runStep(nrOfThreads, minStepMs);
+                // Sprawdzanie, czy żądano anulowania
+                if (cancelTokenReceiver.IsCancellationRequested)
+                {
+                    return; // Zakończ wątek, jeśli anulowano
+                }
+
+                step = runStep(nrOfThreads, minStepMs); // Wykonaj krok symulacji
                 runsCounter += 1;
 
+                // Sprawdzanie stanu pauzy
                 if (channel.Reader.Count > 0)
                 {
                     if (channel.Reader.TryRead(out bool message) && message)
@@ -275,19 +283,16 @@ public abstract class Simulation : INotifyPropertyChanged
                     }
                 }
 
-                if (cancelTokenReceiver.IsCancellationRequested)
-                {
-                    return;
-                }
-
-                stepFinished(step);
+                stepFinished(step); // Zakończenie kroku symulacji
                 totalElapsedTicks += step.ElapsedTicks;
-            } while (!step.IsEdgeConditionMet);
 
+            } while (!step.IsEdgeConditionMet && !cancelTokenReceiver.IsCancellationRequested); // Zakończenie na podstawie stanu brzegowego lub anulowania
+
+            // Po zakończeniu symulacji
             simulationFinished(new SimulationResult(step.Matrix, totalElapsedTicks, step.Step));
         });
 
-        simulationThread.Start();
+        simulationThread.Start(); // Rozpocznij wątek symulacji
     }
 
 }

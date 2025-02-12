@@ -3,9 +3,7 @@ C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\ThermalSpread.runtimeconfig.json
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\ThermalSpread.dll
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\ThermalSpread.pdb
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\ConfigurationPanel.g.cs
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\ConsoleOutput.g.cs
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\FileInput.g.cs
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\InteractivityPanel.g.cs
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\SimulationPanel.g.cs
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\TemperaturesCanvas.g.cs
@@ -14,9 +12,7 @@ C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\ThermalSpread_MarkupCompile.cache
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\ThermalSpread_MarkupCompile.lref
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\ConfigurationPanel.baml
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\ConsoleOutput.baml
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\FileInput.baml
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\InteractivityPanel.baml
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\SimulationPanel.baml
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\components\TemperaturesCanvas.baml
@@ -32,15 +28,6 @@ C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\ThermalSpread.pdb
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\ThermalSpread.genruntimeconfig.cache
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\ref\ThermalSpread.dll
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\images\circle.png
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\obj\x64\Release\net8.0-windows\ThermalSpread_Content.g.cs
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\images\freeform.png
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\images\pen.png
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\images\rectangle.png
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\images\resize-icon.png
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\images\rubber.png
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\images\save-icon.png
-C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\images\straight.png
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\System.CodeDom.dll
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\System.Management.dll
 C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\ThermalSpread\bin\x64\Release\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll
