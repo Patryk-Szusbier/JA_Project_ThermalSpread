@@ -1,0 +1,14 @@
+﻿  pch.cpp
+  dllmain.cpp
+  Simulator.cpp
+C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\CppModule\CppModule\Simulator.cpp(9,6): warning C4273: "_runSingleStep": niespójne powiązanie biblioteki dll
+  (kompilowanie pliku źródłowego „/Simulator.cpp”)
+      C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\CppModule\CppModule\Simulator.h(5,31):
+      zobacz poprzednią definicję „_runSingleStep”
+  
+     Trwa tworzenie biblioteki C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\CppModule\x64\Release\CppModule.lib i obiektu C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\CppModule\x64\Release\CppModule.exp
+  Trwa generowanie kodu
+  Previous IPDB not found, fall back to full compilation.
+  All 2 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Zakończono generowanie kodu
+  CppModule.vcxproj -> C:\Users\Patryk\Documents\GitHub\JA_Project_ThermalSpread\CppModule\x64\Release\CppModule.dll
