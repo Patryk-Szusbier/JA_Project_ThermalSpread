@@ -31,7 +31,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         };
     }
 
-    private static TemperaturesMatrix getDefaultTemperaturesMatrix(IEnumerable<(Point point, byte value)>? initialTemperatures = null, IEnumerable<(Point point, byte value)>? constantTemperatures = null, int width = 64, int height = 64)
+    private static TemperaturesMatrix getDefaultTemperaturesMatrix(IEnumerable<(Point point, byte value)>? initialTemperatures = null, IEnumerable<(Point point, byte value)>? constantTemperatures = null, int width = 128, int height = 128)
     {
         var newInitialTemperatures = initialTemperatures ?? new List<(Point point, byte value)>();
         var newConstantTemperatures = constantTemperatures ?? new List<(Point point, byte value)>();
